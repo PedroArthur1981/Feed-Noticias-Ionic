@@ -1,0 +1,208 @@
+/* Estilos gerais */
+html, body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  background: #121212;
+  font-family: 'Roboto', sans-serif;
+  color: white;
+}
+
+ion-content {
+  position: relative;
+  --ion-background-color: transparent;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 100px; /* Espaço reservado para o footer */
+}
+
+.watermark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/assets/img/crazy-news.png'); /* Substitua pelo caminho da sua imagem */
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.05; /* Ajuste a opacidade conforme necessário */
+  z-index: -1;
+}
+
+.icon-grid {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.icon-row {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.icon-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+  perspective: 1000px; /* Adiciona perspectiva para o efeito 3D */
+}
+
+.icon-item:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+}
+
+.icon-item ion-icon {
+  font-size: 40px;
+  margin-bottom: 10px;
+  color: #f50000;
+  transition: color 0.3s, text-shadow 0.3s;
+  animation: bounce 2s infinite; /* Adiciona animação contínua */
+}
+
+.icon-item:hover ion-icon {
+  color: #00e5ff;
+  text-shadow: 0 0 15px #00e5ff;
+}
+
+.developer-icon {
+  width: 30px; /* Define um tamanho menor para a imagem */
+  height: 30px; /* Define um tamanho menor para a imagem */
+  margin-bottom: 10px;
+  animation: bounce 2s infinite; /* Adiciona animação contínua */
+}
+
+/* Classe flip para animação */
+.flip {
+  transform: rotateY(360deg);
+  transition: transform 0.6s;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(18, 18, 18, 0.9); /* Fundo semitransparente */
+  text-align: center;
+  padding: 10px 20px;
+  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.footer hr {
+  margin-bottom: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer .back-button {
+  font-size: 18px;
+  color: #00e5ff;
+  border: 2px solid #00e5ff;
+  border-radius: 12px;
+  padding: 10px 20px;
+  transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+}
+
+.footer .back-button:hover {
+  color: #121212;
+  background: #00e5ff;
+  box-shadow: 0 4px 20px rgba(0, 229, 255, 0.5);
+}
+
+/* Ajustes para telas menores */
+@media (max-width: 600px) {
+  html, body {
+    background: #ffffff; /* Fundo branco para dispositivos móveis */
+    color: #121212; /* Cor do texto preta para contraste */
+  }
+
+  .icon-grid {
+    flex-direction: column;
+  }
+
+  .icon-item {
+    margin: 10px; /* Reduz a margem em telas menores */
+  }
+
+  .footer {
+    background: rgba(255, 255, 255, 0.9); /* Fundo semitransparente para o footer em dispositivos móveis */
+    color: #121212; /* Cor do texto do footer preta para contraste */
+  }
+
+  .footer .back-button {
+    color: #121212; /* Cor do texto do botão no footer */
+    border: 2px solid #121212; /* Cor da borda do botão no footer */
+  }
+
+  .footer .back-button:hover {
+    color: #ffffff; /* Cor do texto do botão no hover */
+    background: #121212; /* Cor de fundo do botão no hover */
+    box-shadow: 0 4px 20px rgba(18, 18, 18, 0.5); /* Sombra do botão no hover */
+  }
+}
+
+/* Estilos específicos para iOS */
+.platform-ios .footer {
+  background: rgba(255, 255, 255, 0.9); /* Fundo semitransparente para iOS */
+}
+
+/* Estilos específicos para Android */
+.platform-android .footer {
+  background: rgba(0, 0, 0, 0.9); /* Fundo semitransparente para Android */
+}
+
+/* Dark mode styles */
+body.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+body.dark-mode .icon-item {
+  background-color: #1e1e1e; /* Ajuste para o fundo dos ícones */
+}
+
+body.dark-mode ion-label {
+  color: #ffffff; /* Ajuste para a cor das labels */
+}
+
+body.dark-mode .footer {
+  background-color: #1e1e1e;
+}
+
+body.dark-mode .footer .back-button {
+  color: #00e5ff;
+  border-color: #00e5ff;
+}
+
+body.dark-mode .footer .back-button:hover {
+  color: #121212;
+  background-color: #00e5ff;
+}
+
+body.dark-mode .footer hr {
+  border-color: rgba(255, 255, 255, 0.2); /* Ajuste para a cor do separador */
+}
+
+body.dark-mode .developer-icon {
+  filter: invert(100%) brightness(0.8); /* Ajuste para a cor do ícone dos desenvolvedores no modo escuro */
+}
+

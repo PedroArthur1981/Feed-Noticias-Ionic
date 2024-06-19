@@ -1,0 +1,37 @@
+
+<ion-content [fullscreen]="true">
+  <div class="dark-mode-toggle" (click)="toggleDarkMode()">
+    <ion-icon [name]="isDarkMode ? 'sunny-outline' : 'moon-outline'"></ion-icon>
+    <ion-label>Modo Dark</ion-label>
+  </div>
+  <br><br><br><br>
+  <ion-list>
+    <ion-item *ngFor="let item of lista_items">
+      <ion-thumbnail slot="start">
+        <img [src]="item.image">
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{ item.title }}</h2>
+        <p>{{ item.description }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="onIonInfinite($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Carregando mais artigos...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>
+
+<ion-footer>
+  <ion-tabs>
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button (click)="goToTabTelaInicial()">
+        <ion-label>Tela Inicial</ion-label>
+      </ion-tab-button>
+      <ion-tab-button (click)="scrollToTop()">
+        <ion-label>Início da Página</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+</ion-footer>

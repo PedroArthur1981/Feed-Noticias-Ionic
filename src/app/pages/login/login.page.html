@@ -1,0 +1,79 @@
+<ion-content [fullscreen]="true">
+  <!-- Container para temperatura e relógio -->
+  <div class="top-bar">
+    <div class="temperature">
+      <ion-title *ngIf="temperature !== undefined"> {{ temperature }}°C</ion-title>
+    </div>
+    <div class="clock">
+      <ion-title>{{ currentTime }}</ion-title>
+    </div>
+  </div>
+  <div class="container">
+    <br>
+    <div class="header text-center">
+      <div class="logo-container">
+        <img src="assets/img/crazy-news.png" class="img-fluid logo" alt="Logo">
+      </div>
+      <ion-title class="app-title text-center">Seu APP de Notícias Variadas</ion-title>
+      <br>
+      <ion-title class="welcome-title">Bem-vindo</ion-title>
+      <p class="subTitle">Entre para acessar sua conta</p>
+    </div>
+
+    <form [formGroup]="loginForm">
+      <div class="form-container">
+        <h1 class="form-title">Login</h1>
+
+        <div>
+          <ion-icon name="person-outline" slot="start" class="input-icon"></ion-icon>
+          <ion-input formControlName="email" placeholder="Email" type="email" autocomplete="off" class="input-login"
+            (ionInput)="convertEmailToLowerCase()"></ion-input>
+            <br/>
+
+          <div class="error-text"
+            *ngIf="this.loginForm.controls?.['email'].touched && this.loginForm.controls?.['email'].invalid">
+            <ion-text *ngIf="errorControl.email.errors?.required">
+              E-mail é obrigatório
+            </ion-text>
+            <ion-text *ngIf="errorControl.email.errors?.pattern">
+              E-mail deve ser válido
+            </ion-text>
+          </div>
+          
+
+
+          <ion-icon name="lock-closed-outline" slot="start" class="input-icon"></ion-icon>
+          <ion-input [type]="passwordType" formControlName="password" placeholder="Senha" autocomplete="off" class="input-login"
+            maxlength="8" (keydown.enter)="onEnter($event)"> <ion-icon [name]="passwordIcon" slot="end" (click)="togglePasswordVisibility()"></ion-icon></ion-input>
+            <br/>
+          
+          <div class="error-text"
+            *ngIf="loginForm.controls['password'].touched && loginForm.controls['password'].invalid">
+            <ion-text *ngIf="loginForm.controls['password'].errors?.required">
+              A senha é obrigatória
+            </ion-text>
+            <ion-text *ngIf="loginForm.controls['password'].errors?.pattern">
+              A senha deve conter pelo menos um dígito, uma letra minúscula, uma letra maiúscula e ter um comprimento
+              mínimo de 8 caracteres.
+            </ion-text>
+            <ion-text *ngIf="loginForm.controls['password'].errors?.maxlength">
+              A senha não pode ter mais de 8 caracteres.
+            </ion-text>
+          </div>
+
+          <div class="forgot-password-container">
+            <a [routerLink]="['/reset-password']" class="futuristic-link">Esqueceu sua senha?</a>
+          </div>
+        </div>
+
+        <div class="signup-link">
+          <p>Usuário Novo? <a [routerLink]="['/signup']" class="futuristic-link">Cadastre-se</a></p>
+        </div>
+
+        <div class="login-button">
+          <ion-button expand="block" (click)="login()" class="futuristic-button">Login</ion-button>
+        </div>
+      </div>
+    </form>
+  </div>
+</ion-content>

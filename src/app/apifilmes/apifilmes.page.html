@@ -1,0 +1,38 @@
+<ion-content [fullscreen]="true">
+  <div class="dark-mode-toggle" (click)="toggleDarkMode()">
+    <ion-icon [name]="isDarkMode ? 'sunny-outline' : 'moon-outline'"></ion-icon>
+    <ion-label>Modo Dark</ion-label>
+  </div>
+  <br><br><br><br>
+  
+  <ion-card *ngFor="let filme of listaFilmes">
+    <img [src]="'https://image.tmdb.org/t/p/w500'+filme.backdrop_path" />
+    <ion-card-header>
+      <ion-card-title>{{filme.title}}</ion-card-title>
+      <ion-card-subtitle>nota: {{filme.vote_average}}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      {{filme.overview}}
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Infinite Scroll -->
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadMoreFilmes($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Carregando mais filmes...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>
+<ion-footer>
+  <ion-tabs>
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button (click)="goToTabTelaInicial()">
+        <ion-label>Tela Inicial</ion-label>
+      </ion-tab-button>
+      <ion-tab-button (click)="scrollToTop()">
+        <ion-label>Início da Página</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+</ion-footer>

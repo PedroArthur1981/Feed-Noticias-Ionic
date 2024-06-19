@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+:root {
+  --background-color: #121212;
+  --primary-color: #00ffcc;
+  --secondary-color: #ff33cc;
+  --tertiary-color: #3333ff;
+  --font-family: 'Orbitron', sans-serif;
+  --border-radius: 15px;
+}
+
+body {
+  background: var(--background-color);
+  font-family: var(--font-family);
+}
+
+ion-header {
+  background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+  border-bottom: 2px solid var(--primary-color);
+  font-family: var(--font-family);
+  text-transform: uppercase;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+ion-toolbar {
+  --background: none;
+  --ion-color-base: var(--primary-color);
+}
+
+ion-title {
+  color: var(--tertiary-color);
+  font-size: 1.8rem;
+  text-align: center;
+  letter-spacing: 2px;
+  text-shadow: 0 0 10px var(--primary-color);
+}
+
+ion-content {
+  --background: var(--background-color);
+  color: var(--primary-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
+  font-family: var(--font-family);
+  text-align: center;
+}
+
+.photo-container {
+  margin: 20px;
+  padding: 15px;
+  border-radius: var(--border-radius);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  animation: fadeIn 1s ease-out forwards;
+}
+
+.photo-container:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
+}
+
+.photo {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 3px solid var(--secondary-color);
+  transition: transform 0.3s ease-in-out;
+}
+
+.photo:hover {
+  transform: rotate(360deg);
+}
+
+.photo-name {
+  margin-top: 10px;
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  text-shadow: 0 0 5px var(--secondary-color);
+}
+
+ion-footer {
+  background: linear-gradient(120deg, var(--primary-color), var(--secondary-color));
+  border-top: 2px solid var(--primary-color);
+  animation: gradientFlow 8s ease infinite;
+  box-shadow: inset 0 0 10px var(--tertiary-color);
+}
+
+@keyframes gradientFlow {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.back-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  font-size: 1.2rem;
+  color: var(--primary-color);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 0 0 5px var(--primary-color);
+  cursor: pointer;
+  transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+.back-button:hover {
+  background-color: var(--secondary-color);
+  color: var(--background-color);
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -1,0 +1,199 @@
+$primary-color: #0f0f1f;
+$secondary-color: #1f1f2f;
+$accent-color: #00d4ff;
+$error-color: #ff4d4d;
+
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  background: linear-gradient(135deg, $primary-color, $secondary-color);
+  color: #fff;
+  border-bottom: 1px solid $accent-color;
+}
+
+.temperature ion-title,
+.clock ion-title {
+  font-size: 20px;
+  text-shadow: 0 0 5px $accent-color;
+  color: #fff; /* Garante que o texto fique branco */
+}
+
+.container {
+  padding: 20px;
+  background: linear-gradient(135deg, $primary-color, $secondary-color);
+  color: #fff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.logo {
+  max-width: 200px;
+  filter: drop-shadow(0 0 10px $accent-color);
+}
+
+.app-title {
+  font-size: 15px;
+  font-weight: bold;
+  margin: 20px 0 10px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #fff;
+  text-shadow: 0 0 10px $accent-color;
+  text-align: center;
+}
+
+.welcome-title {
+  font-size: 24px;
+  text-align: center;
+  font-weight: bold;
+  margin: 10px 0;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #fff;
+  text-shadow: 0 0 10px $accent-color;
+}
+
+.subTitle {
+  font-size: 16px;
+  text-align: center;
+  color: #ddd;
+  text-shadow: 0 0 5px $accent-color;
+  margin-bottom: 10px;
+}
+
+.form-container {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.form-title {
+  font-size: 24px;
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  color: #fff;
+  text-shadow: 0 0 10px $accent-color;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-item {
+  margin-bottom: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.futuristic-input .input-icon {
+  color: $accent-color;
+}
+
+.input {
+  width: 100%;
+  background-color: #00d4ff; /* Fundo branco */
+  color: #000; /* Texto preto */
+  border: none; /* Remove qualquer borda padrão */
+  padding: 10px; /* Adiciona padding para um espaço interno */
+  border-radius: 5px; /* Bordas arredondadas */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra leve */
+}
+
+.input-login {
+  background-color: black; /* Fundo branco */
+  color: #ffff
+}
+
+.input-login::placeholder {
+  color: #ffff
+}
+
+.futuristic-button {
+  margin-top: 10px;
+  background: $accent-color;
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0 0 20px $accent-color;
+  transition: background 0.3s;
+}
+
+.futuristic-button:hover {
+  background: lighten($accent-color, 10%);
+}
+
+.forgot-password a,
+.signup-link a {
+  color: $accent-color;
+  text-decoration: none;
+  font-weight: bold;
+  text-shadow: 0 0 5px $accent-color;
+  transition: color 0.3s;
+}
+
+.forgot-password a:hover,
+.signup-link a:hover {
+  color: lighten($accent-color, 10%);
+}
+
+.login-button {
+  margin-top: 20px;
+}
+
+.error-text ion-text {
+  color: $error-color;
+  font-size: 14px;
+}
+
+.forgot-password-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+.forgot-password-container a {
+  color: $accent-color;
+  text-decoration: none;
+  font-weight: bold;
+  text-shadow: 0 0 5px $accent-color;
+  transition: color 0.3s;
+}
+
+.forgot-password-container a:hover {
+  color: lighten($accent-color, 10%);
+}
+
+.signup-link {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+
+  p {
+    color: #fff;
+    text-align: center;
+    font-size: 16px;
+    text-shadow: 0 0 5px $accent-color;
+  }
+
+  a {
+    color: $accent-color;
+    text-decoration: none;
+    font-weight: bold;
+    text-shadow: 0 0 5px $accent-color;
+    transition: color 0.3s;
+  }
+
+  a:hover {
+    color: lighten($accent-color, 10%);
+  }
+}

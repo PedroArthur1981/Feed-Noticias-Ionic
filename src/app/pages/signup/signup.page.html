@@ -1,0 +1,116 @@
+<ion-content [fullscreen]="true" class="signup-content">
+  <br>
+  <br>
+  <div class="header">
+    <ion-title class="title">Bem-vindo!</ion-title>
+    <br>
+    <p class="subTitle">Crie sua conta</p>
+  </div>
+  <form [formGroup]="regForm" (ngSubmit)="signUp()" novalidate>
+    <div class="form-container ion-padding">
+      <!-- Nome -->
+      <ion-item class="input-item">
+        <ion-icon name="person-outline" slot="start" class="input-icon"></ion-icon>
+        <ion-input placeholder="Nome" formControlName="fullname" class="input" (ionInput)="validateName($event)"></ion-input>
+      </ion-item>
+      <ion-text class="error-message" *ngIf="errorControl['fullname'].touched && errorControl['fullname'].invalid">
+        <ng-container *ngIf="errorControl['fullname'].errors?.required">
+          Nome é obrigatório
+        </ng-container>
+        <ng-container *ngIf="errorControl['fullname'].errors?.pattern">
+          Nome não pode conter números ou caracteres especiais
+        </ng-container>
+      </ion-text>
+
+      <!-- Email -->
+      <ion-item class="input-item">
+        <ion-icon name="mail-outline" slot="start" class="input-icon"></ion-icon>
+        <ion-input [disabled]="!isFullNameValid" formControlName="email" class="input" placeholder="Email" (ionInput)="validateEmail($event)"></ion-input>
+      </ion-item>
+      <ion-text class="error-message" *ngIf="errorControl['email'].touched && errorControl['email'].invalid">
+        <ng-container *ngIf="errorControl['email'].errors?.required">
+          Email é obrigatório
+        </ng-container>
+        <ng-container *ngIf="errorControl['email'].errors?.pattern">
+          Email deve ser válido 
+        </ng-container>
+      </ion-text>
+
+      <!-- Senha -->
+      <ion-item class="input-item">
+        <ion-icon name="lock-closed-outline" slot="start" class="input-icon"></ion-icon>
+        <ion-input [type]="passwordType" [disabled]="!isEmailValid" placeholder="Senha" formControlName="password" class="input" (ionInput)="validatePassword($event)"></ion-input>
+        <ion-icon name="eye-outline" slot="end" class="toggle-password-icon" (click)="togglePasswordVisibility()"></ion-icon>
+      </ion-item>
+      <ion-text class="error-message" *ngIf="errorControl['password'].touched && errorControl['password'].invalid">
+        <ng-container *ngIf="errorControl['password'].errors?.required">
+          Senha é obrigatória
+        </ng-container>
+        <ng-container *ngIf="errorControl['password'].errors?.pattern">
+          A senha deve conter 8 caracteres: uma letra maiúscula, uma letra minúscula, um caracter especial (!, #, $, %, &, *, =) e cinco números.
+        </ng-container>
+      </ion-text>
+
+      <!-- Checkboxes de conformidade da senha -->
+      <div *ngIf="showPasswordChecklist" class="password-checklist-box">
+        <ion-item class="password-checklist-item">
+          <ion-checkbox slot="start" [checked]="uppercaseChecked" disabled></ion-checkbox>
+          <ion-label>1 letra maiúscula</ion-label>
+        </ion-item>
+        <ion-item class="password-checklist-item">
+          <ion-checkbox slot="start" [checked]="lowercaseChecked" disabled></ion-checkbox>
+          <ion-label>1 letra minúscula</ion-label>
+        </ion-item>
+        <ion-item class="password-checklist-item">
+          <ion-checkbox slot="start" [checked]="specialCharChecked" disabled></ion-checkbox>
+          <ion-label>1 caracter (!, #, $, %, &, *, =)</ion-label>
+        </ion-item>
+        <ion-item class="password-checklist-item">
+          <ion-checkbox slot="start" [checked]="fiveNumbersChecked" disabled></ion-checkbox>
+          <ion-label>5 números</ion-label>
+        </ion-item>
+      </div>
+
+      <!-- Confirmar Senha -->
+      <ion-item class="input-item">
+        <ion-icon name="lock-closed-outline" slot="start" class="input-icon"></ion-icon>
+        <ion-input [type]="confirmPasswordType" [maxlength]="8" [disabled]="!isPasswordValid" placeholder="Confirmar Senha" formControlName="confirmPassword" class="input" (ionInput)="validateConfirmPassword($event)"></ion-input>
+        <ion-icon name="eye-outline" slot="end" class="toggle-password-icon" (click)="toggleConfirmPasswordVisibility()"></ion-icon>
+      </ion-item>
+      <ion-text class="error-message" *ngIf="errorControl['confirmPassword'].touched && errorControl['confirmPassword'].invalid">
+        <ng-container *ngIf="errorControl['confirmPassword'].errors?.required">
+          Confirmação de senha é obrigatória
+        </ng-container>
+        <ng-container *ngIf="errorControl['confirmPassword'].errors?.mustMatch">
+          As senhas não coincidem
+        </ng-container>
+      </ion-text>
+
+      <!-- Checkbox Termos -->
+      <ion-item class="input-item terms-item">
+        <ion-checkbox [disabled]="!termsRead" formControlName="terms" slot="start" (ionChange)="validateTerms()"></ion-checkbox>
+        <ion-label>
+          Eu concordo com <a (click)="openTerms()" class="terms-link">os termos</a>.
+        </ion-label>
+      </ion-item>
+      <ion-text class="error-message" *ngIf="termsCheckboxClicked && !termsRead">
+        Obrigatório ler o termo até o final
+      </ion-text>
+      <ion-text class="error-message" *ngIf="errorControl['terms'].touched && errorControl['terms'].invalid">
+        <ng-container *ngIf="errorControl['terms'].errors?.required">
+          Você deve concordar com os termos.
+        </ng-container>
+      </ion-text>
+    </div>
+    
+    <!-- Botões -->
+    <div class="button-group">
+      <ion-button expand="block" type="submit" [disabled]="!regForm.valid || !termsAccepted">Cadastrar</ion-button>
+      <ion-button expand="block" color="medium" (click)="clearForm()">Limpar</ion-button>
+    </div>
+
+    <div class="signinLink">
+      <p>Já é um membro? <a [routerLink]="['/login']">Entre agora</a></p>
+    </div>
+  </form>
+</ion-content>

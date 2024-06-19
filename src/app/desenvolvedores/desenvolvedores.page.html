@@ -1,0 +1,13 @@
+<ion-content>
+  <div class="photo-container" *ngFor="let photo of photos">
+    <img [src]="photo.src" class="photo" />
+    <div class="photo-name">{{ photo.name.split(' Matrícula:')[0] }}</div>
+    <div class="photo-matricula">Matrícula: {{ photo.name.split(' Matrícula:')[1] }}</div>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <div class="back-button" (click)="goBack()">
+    Voltar
+  </div>
+</ion-footer>

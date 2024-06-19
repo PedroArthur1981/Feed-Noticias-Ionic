@@ -1,0 +1,70 @@
+<ion-content>
+  <div class="watermark"></div>
+  <div class="icon-grid">
+    <div class="icon-row">
+      <div class="icon-item" (click)="toggleDarkMode()" (mousedown)="applyFlip($event)">
+        <ion-icon [name]="isDarkMode ? 'sunny-outline' : 'moon-outline'"></ion-icon>
+        <ion-label> Modo Dark</ion-label>
+      </div>
+    </div>
+    
+    <!-- Primeira linha com 3 ícones -->
+    <div class="icon-row">
+      <div class="icon-item" (click)="goToTabs1()" (mousedown)="applyFlip($event)">
+        <ion-icon name="newspaper-outline"></ion-icon>
+        <ion-label>Jornalismo</ion-label>
+      </div>
+      <div class="icon-item" (click)="goToTabs2()" (mousedown)="applyFlip($event)">
+        <ion-icon name="football-outline"></ion-icon>
+        <ion-label>Esportes</ion-label>
+      </div>
+      <div class="icon-item" (click)="goToApiTecnologia()" (mousedown)="applyFlip($event)">
+        <ion-icon name="hardware-chip-outline"></ion-icon>
+        <ion-label>Tecnologia</ion-label>
+      </div>
+    </div>
+    
+    <!-- Segunda linha com 3 ícones -->
+    <div class="icon-row">
+      <div class="icon-item" (click)="goToApiSaude()" (mousedown)="applyFlip($event)">
+        <ion-icon name="fitness-outline"></ion-icon>
+        <ion-label>Saúde</ion-label>
+      </div>    
+      <div class="icon-item" (click)="goToApiFinancas()" (mousedown)="applyFlip($event)">
+        <ion-icon name="cash-outline"></ion-icon>
+        <ion-label>Finanças</ion-label>
+      </div>
+      <div class="icon-item" (click)="goToApiCiencia()" (mousedown)="applyFlip($event)">
+        <ion-icon name="flask-outline"></ion-icon>
+        <ion-label>Ciência</ion-label>
+      </div>    
+    </div>
+    
+    <!-- Terceira linha com 2 ícones -->
+    <div class="icon-row">
+      <div class="icon-item" (click)="goToApiFilme()" (mousedown)="applyFlip($event)">
+        <ion-icon name="tv-outline"></ion-icon>
+        <ion-label>Filmes e Séries</ion-label>
+      </div>
+      <div class="icon-item" (click)="goToApiEntretenimento()" (mousedown)="applyFlip($event)">
+        <ion-icon name="chatbubbles-outline"></ion-icon>
+        <ion-label>Notícias da Mídia</ion-label>
+      </div>
+    </div>
+    
+    <br><br>
+    
+    <!-- Quarta linha com 1 ícone -->
+    <div class="icon-row">
+      <div class="icon-item" (click)="goToDevelopers()" (mousedown)="applyFlip($event)">
+        <img src="/assets/img/desenvolvedores.jpg" alt="Desenvolvedores" class="developer-icon">
+        <ion-label>Desenvolvedores</ion-label>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer">
+    <hr>
+    <ion-button fill="clear" routerLink="/login" class="back-button">Voltar ao Início</ion-button>
+  </div>
+</ion-content>
